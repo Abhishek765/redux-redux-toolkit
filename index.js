@@ -9,11 +9,19 @@ const initialState = {
 
 // Actions Constants
 const CAKE_ORDERED = "CAKE_ORDERED";
+const CAKE_RESTOCKED = "CAKE_RESTOCKED";
 
 // Actions Creators
 const orderCake = () => {
   return {
     type: CAKE_ORDERED,
+  };
+};
+
+const restockCake = (payload = 1) => {
+  return {
+    type: CAKE_RESTOCKED,
+    payload,
   };
 };
 
@@ -24,6 +32,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         numberOfCakes: state.numberOfCakes - 1,
+      };
+
+    case CAKE_RESTOCKED:
+      return {
+        ...state,
+        numberOfCakes: state.numberOfCakes + action.payload,
       };
 
     default:
@@ -44,6 +58,8 @@ const unsubscribe = store.subscribe(() =>
 store.dispatch(orderCake());
 store.dispatch(orderCake());
 store.dispatch(orderCake());
+
+store.dispatch(restockCake(3));
 
 // unsubscribe from store
 unsubscribe(store);
