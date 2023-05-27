@@ -1,5 +1,6 @@
-import { legacy_createStore as createStore } from "redux";
-import { produce } from "immer";
+const redux = require("redux");
+const createStore = redux.legacy_createStore;
+const produce = require("immer").produce;
 
 const initialState = {
   country: "India",

@@ -1,6 +1,6 @@
 // Creating  Cake shop example using redux
-
-import { combineReducers, legacy_createStore as createStore } from "redux";
+const redux = require("redux");
+const createStore = redux.legacy_createStore;
 
 // initial state
 const initialCakeState = {
